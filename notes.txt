@@ -1,0 +1,13 @@
+Sampling is the idea of taking samples from a given distribution [0, 1) and converting that sample into an outcome
+
+# Prior Sampling
+ - Given some Bayes Net (BN), randomly generate samples and follow the BN from parents to children
+   creating a list of outcomes
+
+# Rejection Sampling
+ - Given some BN, randomly generate samples, but if they samples are inconsistent with the evidence,
+   reject the sample and continue.
+
+# Likelihood Weighting
+ - Given some BN, fix the evidence variables and sample the rest, calculating the weights for each
+   outcome that relies on some fixed variable
