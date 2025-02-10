@@ -9,19 +9,26 @@ class ConditionalVariable:
 
     def add_parent_variable(self, parent):
         self.parent_variables.append(parent)
+        if self not in parent.child_variables:
+            parent.add_child_variable(self)
 
     def add_child_variable(self, child):
-        self.child_variables.append(child)
+        if child not in self.child_variables:
+            self.child_variables.append(child)
+        else:
+            print(f'child {child} already in self')
 
     def set_probability(self, prob):
         self.probability = prob
 
     def __repr__(self):
-        return f"Parent Variables: {self.parent_variables}\nChild Variables: {self.child_variables}"
+        return f"Probability: {self.probability}\nFigure some good string representation out"
 
 pA = ConditionalVariable()
 pB = ConditionalVariable()
 pC = ConditionalVariable()
 pA.set_probability(0.8)
-pA.child_variables(pB)
-pA.child_variables(pB)
+pA.add_child_variable(pB)
+pA.add_child_variable(pC)
+
+print(pA)
